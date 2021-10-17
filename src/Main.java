@@ -1,5 +1,5 @@
 import exception.CustomException;
-import servise.CustomerService;
+import service.CustomerService;
 
 import java.sql.SQLException;
 import java.util.Scanner;
