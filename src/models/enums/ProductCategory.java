@@ -18,7 +18,7 @@ public enum ProductCategory {
     public static ProductCategory getVal(String label) {
         ProductCategory productCategory;
         try {
-            productCategory = valueOf(label.trim());
+            productCategory = valueOf(label.trim().toLowerCase());
         } catch (IllegalArgumentException exception) {
             productCategory = UNKNOWN;
 

@@ -2,11 +2,32 @@ package models;
 
 import models.enums.ProductCategory;
 
+import java.util.Objects;
+
 public class Product {
     private int id;
+    private String name;
     private ProductCategory productCategory;
-    private int numberOfStock;
+    private int stock;
     private long price;
+
+    public Product(String name, ProductCategory productCategory, int stock, long price) {
+        this.name = name;
+        this.productCategory = productCategory;
+        this.stock = stock;
+        this.price = price;
+    }
+
+    public Product() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int getId() {
         return id;
@@ -24,12 +45,12 @@ public class Product {
         this.productCategory = productCategory;
     }
 
-    public int getNumberOfStock() {
-        return numberOfStock;
+    public int getStock() {
+        return stock;
     }
 
-    public void setNumberOfStock(int numberOfStock) {
-        this.numberOfStock = numberOfStock;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     public long getPrice() {
@@ -38,5 +59,29 @@ public class Product {
 
     public void setPrice(long price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", productCategory=" + productCategory +
+                ", stock=" + stock +
+                ", price=" + price +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(name, product.name) && productCategory == product.productCategory;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, productCategory);
     }
 }

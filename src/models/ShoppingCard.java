@@ -6,6 +6,7 @@ public class ShoppingCard {
     private Product product;
     private int numberOfOrder;
     private Customer customer;
+    private double totalPrice;
 
     public int getId() {
         return id;
@@ -13,6 +14,14 @@ public class ShoppingCard {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Product getProduct() {

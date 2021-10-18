@@ -1,16 +1,22 @@
 import exception.CustomException;
+import models.Product;
 import service.CustomerService;
+import service.ProductService;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
     private static CustomerService customerService;
+    private static ProductService productService;
 
     static {
         try {
             customerService = new CustomerService();
+            productService = new ProductService();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -85,8 +91,11 @@ public class Main {
         return customerInfo;
     }
 
-    private static void onlineShop() {
-
+    private static void onlineShop() throws SQLException, ClassNotFoundException {
+        List<Product> productList = productService.getAllProducts();
+        for (Product product :productList) {
+            System.out.println(product);
+        }
     }
 
 }

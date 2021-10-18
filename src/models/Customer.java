@@ -1,6 +1,8 @@
 package models;
 
 
+import java.util.Objects;
+
 public class Customer {
     private int id;
     private String fullName;
@@ -46,5 +48,28 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
+                ", nationalCode='" + nationalCode + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return Objects.equals(nationalCode, customer.nationalCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nationalCode);
     }
 }
