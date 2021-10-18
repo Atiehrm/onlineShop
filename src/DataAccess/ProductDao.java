@@ -1,5 +1,6 @@
 package DataAccess;
 
+import models.Customer;
 import models.Product;
 import models.enums.ProductCategory;
 
@@ -27,10 +28,30 @@ public class ProductDao extends BaseDao {
                 Product product = new Product();
                 product.setId(resultSet.getInt("id"));
                 product.setName(resultSet.getString("name"));
-                product.setProductCategory(ProductCategory.getVal(resultSet.getString("category")));
+                product.setProductCategory(ProductCategory.valueOf(resultSet.getString("category").toUpperCase()));
+                product.setStock(resultSet.getInt("stock"));
+                product.setPrice(resultSet.getDouble("price"));
                 productList.add(product);
             }
         }
         return productList;
+    }
+
+    public Product findById(int id) throws SQLException, ClassNotFoundException {
+        Product product = null;
+        if (getConnection() != null) {
+            Statement statement = getConnection().createStatement();
+            String sqlQuery = String.format("select * from product where id= '%d'", id);
+            ResultSet resultSet = statement.executeQuery(sqlQuery);
+            while (resultSet.next()) {
+                product = new Product();
+                product.setId(resultSet.getInt("id"));
+                product.setName(resultSet.getString("name"));
+                product.setProductCategory(ProductCategory.valueOf(resultSet.getString("category").toUpperCase()));
+                product.setStock(resultSet.getInt("stock"));
+                product.setPrice(resultSet.getDouble("price"));
+            }
+        }
+        return product;
     }
 }

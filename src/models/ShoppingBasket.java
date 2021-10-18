@@ -1,12 +1,15 @@
 package models;
 
 
-public class ShoppingCard {
+public class ShoppingBasket {
     private int id;
     private Product product;
-    private int numberOfOrder;
     private Customer customer;
-    private double totalPrice;
+
+    public ShoppingBasket(Product product, Customer customer) {
+        this.product = product;
+        this.customer = customer;
+    }
 
     public int getId() {
         return id;
@@ -16,28 +19,12 @@ public class ShoppingCard {
         this.id = id;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
     public Product getProduct() {
         return product;
     }
 
     public void setProduct(Product product) {
         this.product = product;
-    }
-
-    public int getNumberOfOrder() {
-        return numberOfOrder;
-    }
-
-    public void setNumberOfOrder(int numberOfOrder) {
-        this.numberOfOrder = numberOfOrder;
     }
 
     public Customer getCustomer() {

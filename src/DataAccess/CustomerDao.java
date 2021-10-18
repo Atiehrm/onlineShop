@@ -51,5 +51,22 @@ public class CustomerDao extends BaseDao {
             }
         }
     }
+
+    public Customer findByNationalCode(String nationalCode) throws SQLException, ClassNotFoundException {
+        Customer customer = null;
+        if (getConnection() != null) {
+            Statement statement = getConnection().createStatement();
+            String sqlQuery = String.format("select * from customer where national_code= %s", nationalCode);
+            ResultSet resultSet = statement.executeQuery(sqlQuery);
+            while (resultSet.next()) {
+                customer = new Customer();
+                customer.setId(resultSet.getInt("id"));
+                customer.setFullName(resultSet.getString("name"));
+                customer.setNationalCode(resultSet.getString("national_code"));
+                customer.setEmail(resultSet.getString("email"));
+            }
+        }
+        return customer;
+    }
 }
 

@@ -19,4 +19,9 @@ public class ProductService {
         productList = productDao.getProducts();
         return productList;
     }
+
+    public Product findById(int id) throws SQLException, ClassNotFoundException {
+        Product product = productDao.findById(id);
+        return product;
+    }
 }

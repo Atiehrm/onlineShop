@@ -9,9 +9,9 @@ public class Product {
     private String name;
     private ProductCategory productCategory;
     private int stock;
-    private long price;
+    private double price;
 
-    public Product(String name, ProductCategory productCategory, int stock, long price) {
+    public Product(String name, ProductCategory productCategory, int stock, double price) {
         this.name = name;
         this.productCategory = productCategory;
         this.stock = stock;
@@ -53,11 +53,11 @@ public class Product {
         this.stock = stock;
     }
 
-    public long getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

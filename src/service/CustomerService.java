@@ -36,4 +36,9 @@ public class CustomerService {
             return false;
         }
     }
+
+    public Customer findByNationalCode(String nationalCode) throws SQLException, ClassNotFoundException {
+        Customer customer = customerDao.findByNationalCode(nationalCode);
+        return customer;
+    }
 }
