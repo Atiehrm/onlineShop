@@ -143,7 +143,7 @@ public class Main {
             Set<Integer> customerInput = new HashSet<>();
             String[] newCustomerInput = getCustomerProductChoice();
             if (newCustomerInput.length < 6) {
-                addBasket(nationalCode, customerInput, newCustomerInput);
+                addToShoppingBasket(nationalCode, customerInput, newCustomerInput);
             } else {
                 System.out.println("only 5 items valid to add");
             }
@@ -159,7 +159,7 @@ public class Main {
         return newCustomerInput;
     }
 
-    private static void addBasket(String nationalCode, Set<Integer> customerInput, String[] newCustomerInput) throws CustomException, SQLException, ClassNotFoundException {
+    private static void addToShoppingBasket(String nationalCode, Set<Integer> customerInput, String[] newCustomerInput) throws CustomException, SQLException, ClassNotFoundException {
         for (int i = 0; i < 6; i++) {
             if (Utilities.isValidChoice(newCustomerInput[i],productService.getAllProducts().size())) {
                 customerInput.add(Integer.parseInt(newCustomerInput[i]));
