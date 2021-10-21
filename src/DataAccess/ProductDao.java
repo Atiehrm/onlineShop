@@ -37,11 +37,20 @@ public class ProductDao extends BaseDao {
         return productList;
     }
 
-    public Product findById(int id) throws SQLException, ClassNotFoundException {
+    public void updateStock(int productId, int newStock) throws SQLException, ClassNotFoundException {
+        if (getConnection() != null) {
+            Statement statement = getConnection().createStatement();
+            String sqlQuery = String.format("update product set stock= '%d' where id= '%d'"
+                    , newStock,productId);
+            statement.executeUpdate(sqlQuery);
+        }
+    }
+
+    public Product findProduct(int productId) throws SQLException, ClassNotFoundException {
         Product product = null;
         if (getConnection() != null) {
             Statement statement = getConnection().createStatement();
-            String sqlQuery = String.format("select * from product where id= '%d'", id);
+            String sqlQuery = String.format("select * from product where id = '%d'", productId);
             ResultSet resultSet = statement.executeQuery(sqlQuery);
             while (resultSet.next()) {
                 product = new Product();
@@ -53,5 +62,6 @@ public class ProductDao extends BaseDao {
             }
         }
         return product;
+
     }
 }

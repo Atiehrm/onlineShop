@@ -21,7 +21,18 @@ public class ProductService {
     }
 
     public Product findById(int id) throws SQLException, ClassNotFoundException {
-        Product product = productDao.findById(id);
+        Product product = productDao.findProduct(id);
+        return product;
+    }
+
+    public void updateStock(int productId, int order) throws SQLException, ClassNotFoundException {
+        Product product = productDao.findProduct(productId);
+        int newStock = product.getStock() - order;
+        productDao.updateStock(productId, newStock);
+    }
+
+    public Product findProduct(int productId) throws SQLException, ClassNotFoundException {
+        Product product = productDao.findProduct(productId);
         return product;
     }
 }
